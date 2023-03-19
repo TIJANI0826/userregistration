@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}View List{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <p class="pt-3"><strong>{{ user.username }}</strong>
+			
+			<a href="{% url 'logout' %}">Log out</a>.
+		</p>
+		
+		
+		<table class="table table-striped">
+			<thead>
+			  <tr>
+				<th class="th-sm">Shirt</th>
+				<th class="th-sm"> Trouser</th>
+				<th class="th-sm"> Underwear</th>
+				<th class="th-sm">Native</th>
+				<th class="th-sm">Duvet</th>
+				<th class="th-sm">Duver Beddings</th>
+				<th class="th-sm">Towel</th>
+				<th class="th-sm">Drop Off</th>
+			  </tr>
+			</thead>
+			<tbody>
+				{% for item in order %}
+			  <tr>
+				<td>{{ item.shirt }}</td>
+				<td>{{ item.trouser }}</td>
+				<td>{{ item.underwear }}</td>
+				<td>{{ item.native }}</td>
+				<td>{{ item.duvet }}</td>
+				<td>{{ item.duver_beddings }}</td>
+				<td>{{ item.towel }}</td>
+				<td>{{ item.dropp_off }}</td>
+			  </tr>
+			  {% endfor %}
+
+			</tbody>
+		  </table>
+	{% endif %}
+	<script>
+		// Basic example
+		$(document).ready(function () {
+			$('#dtBasicExample').DataTable({
+				"pagingType": "numbers" // "simple" option for 'Previous' and 'Next' buttons only
+			});
+			$('.dataTables_length').addClass('bs-select');
+		});
+	</script>
+	
+{% endblock %}

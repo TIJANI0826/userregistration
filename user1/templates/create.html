@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+Create New List
+{% endblock %}
+ 
+{% block content %}
+	<h3>Create a New Package</h3>
+	<br>
+	<form method="post" action="/create/" class="form-group">
+		{% csrf_token %}
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<div class="input-group-text">
+					<input type="checkbox" value="clicked" name="c{{item.id}}">
+				</div>
+			</div>
+			<div>
+				<input type="text" value="{{item.text}}" class="form-control">
+			</div>
+		</div>
+		<button type="submit" name="save" value="save" class="btn btn-success">Save</button>
+	</form>
+{% endblock %}   
